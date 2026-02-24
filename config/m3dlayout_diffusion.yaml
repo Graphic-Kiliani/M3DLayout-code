@@ -1,0 +1,75 @@
+dataset:
+  encoding_type: "diffusion"
+  sample_num_points: 120 # max_length
+  large_object_categories: ["appliances", "armchair", "bathtub", "bed", "beverage_fridge", "bookshelf",
+                            "cabinet", "ceiling_lamp", "cell_shelf", "chair", "chaise_longue_sofa", "chest_of_drawers",
+                            "children_cabinet", "chinese_chair", "coffee_table", "console_table",
+                            "corner_side_table", "counter", "curtain", "dining_chair", "dining_table",
+                            "dishwasher", "dressing_chair", "dressing_table", "floor_lamp",
+                            "glass_panel_door", "kids_bed", "kitchen_cabinet", "kitchen_space",
+                            "l_shaped_sofa", "large_plant_container", "large_shelf", "lazy_sofa",
+                            "lighting", "lite_door", "lounge_chair", "louver_door", "loveseat_sofa",
+                            "microwave", "mirror", "multi_seat_sofa", "nightstand", "oven", "panel_door",
+                            "pendant_lamp", "rug", "seating", "shelf", "shelving", "shower", "side_table",
+                            "sink", "sofa", "standing_sink", "stool", "table", "toilet", "tv",
+                            "tv_monitor", "tv_stand", "wardrobe", "window", "wine_cabinet"]
+
+network:
+  type: "diffusion_scene_layout_ddpm"
+  # denoising network
+  net_type: "unet1d"
+
+  # concate squarewish layer
+  point_dim: 110
+  latent_dim: 0
+  room_mask_condition: false # not use room_mask 
+  text_condition: True
+  text_embed_dim: 512
+  sample_num_points: 120 # max_length 
+
+  objectness_dim: 0
+  class_dim: 102
+  angle_dim: 2
+  objfeat_dim: 0
+
+  # class condition
+  learnable_embedding: true
+  instance_condition: true
+  instance_emb_dim: 128
+
+  # diffusion config
+  diffusion_kwargs:
+    schedule_type: 'linear'
+    beta_start: 0.0001
+    beta_end: 0.02
+    time_num: 1000 
+    loss_type: 'mse'
+    model_mean_type: 'v' 
+    model_var_type: 'fixedsmall'
+    loss_separate: true
+    # calculate iou loss
+    loss_iou: true
+    train_stats_file: "../mlayout/dataset_stats_train.json"
+
+  net_kwargs:
+    dim: 512
+    dim_mults: [1, 1, 1, 1]
+    channels: 110
+    objectness_dim: 0
+    class_dim: 102
+    angle_dim: 2
+    objfeat_dim: 0
+    self_condition: true
+    context_dim: 0
+    instanclass_dim: 128
+    seperate_all: true
+    merge_bbox: true
+    modulate_time_context_instanclass: true
+    text_condition: True
+    text_dim: 512
+
+feature_extractor:
+  name: "resnet18"
+  feature_size: 64
+  freeze_bn: true
+  input_channels: 1
