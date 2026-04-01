@@ -87,6 +87,27 @@ To run the Gradio demo for 3d layout generation from arbitrary text:
 python gradio_demo.py
 ```
 
+For batch inference from prompt text files (default: 3 files, 1500 prompts total):
+```bash
+python example.py  # Default: Autoregressive
+```
+
+Useful options:
+```bash
+# Enable viz3dl GIF rendering and saving
+python example.py --render-gif
+
+# Use diffusion model
+python example.py --model diffusion
+
+# Customize output directory
+python example.py --output-dir outputs/my_batch_run
+```
+
+Notes:
+- One input txt file produces one output json file.
+- The 1500 prompts are the test prompt set used in the original M3DLayout paper.
+
 ## TODO
 - [x] Release Object Retrieval code of M3DLayout
 - [x] Release rendering code of layouts and scenes
