@@ -56,21 +56,26 @@ pip install -r requirements.txt --use-pep517 --no-build-isolation
 ```
 
 ## Download Dataset
-Please download our processed dataset from [Baidu Netdisk](https://pan.baidu.com/s/1MORQDB4LOROMiKx4FK1uog?pwd=77xy)  or [Google Drive](https://drive.google.com/drive/folders/1cW8DZdbnUrDagxurMT074zhkJGtA87jB?usp=sharing). Please reserve at least 230 GB of storage space to download these datasets. The following items are included: 
+Please download our processed dataset from [Baidu Netdisk](https://pan.baidu.com/s/1I4GRh3VfWw1nyIMVHRyF5A?pwd=jdek) or Huggingface (will be released soon).
 
-| Dataset        | Rendering Images                                                                 | Additional Data                              |
-|----------------|---------------------------------------------------------------------------|-----------------------------------------------|
-| **Infinigen**  |• Floor masks<br>• Oblique-view scene renderings<br>• Top-down scene renderings<br>• Multi-view renderings of main objects | • Text descriptions<br>• Detailed per-scene JSON |
-| **3D-FRONT**   |• Floor masks<br>• Top-down scene renderings                                      | —                                             |
-| **Matterport3D** |• Floor masks for each region<br>• Top-down layout renderings for each region                   | • Detailed per-scene JSON                     |
+The dataset is separated into 3 parts:
 
-Each dataset additionally provides three JSON files with organized and detailed scene info and text descriptions for model training or layout visualization:  
-**`<data_source>_train.json`**, **`<data_source>_test.json`**, and **`<data_source>_val.json`**.
+| Type | Description | Content | Size |
+|---|---|---|---|
+| `scene_dataset` | Origin scene with object geometries and textures | • Infinigen (8392 rooms with normal object density + 7607 rooms with relatively low object density = 15999 rooms): scene.blend, scene with segemented objects and textures. <br>• Matterport3D (95 houses): Postprocessed by segmenting each house into separated ply objects, you can import each subdir as a whole to Blender to receive a complete scene.<br>• 3D-Front (5173 rooms): Since we have not applied any additional processing, you can download the original 3D-FRONT dataset directly from [3D-Front official link](https://huggingface.co/datasets/huanngzh/3D-Front) | 3T before uncompress |
+| `rendering_dataset` | Rendered Images from scene | • Infinigen (15864 rooms): Floor masks, Oblique-view scene renderings, Top-down scene renderings, Text descriptions, Detailed per-scene JSON <br>• Matterport3D (95 houses): Floor masks for each room, Top-down layout renderings for each room, Detailed per-scene JSON <br>• 3D-Front (5173 rooms): Floor masks, Top-down scene renderings | 250GB before uncompress |
+| `layout_dataset` | Layout extracted from scene | **`<data_source>_train.json`**, **`<data_source>_test.json`**, and **`<data_source>_val.json`** for Infinigen & Matterport3D & 3D-Front. Including object count, category, location, bbox size, rotation, multi-level detailed description. | 31MB before uncompress |
 
-The layout materials are listed in `/3d-front/data_3dfront.zip`, `/infinigen/infinigen_postprocess_10603.tar.xz`, `/infinigen/inifinigen_postprocess_5261.tar.xz` and `/matterport3d/data_matterport3d.zip`.
-The scene materials (scenes with geometry and textures) of infinigen are listed in `/inifinigen/scene` with each `.blend` file in each `.tar.xz` file, the scene materials of 3d-front and matterport3d can be found in their respective repository. We have provided abundant functions in `Object-Retrieval-Layout2Scene/render.py` and `util.py` to postprocess the infinigen scene data.
+To be simple, 
 
-You can use `visualization_mlayout.py` in [Object-Retrieval-Layout2Scene](https://github.com/Graphic-Kiliani/Object-Retrieval-Layout2Scene/tree/432d4c22dbd2d16e09d6c81629f124e523f0dc6a) to visualize above json files to see the layout.
+If you want to do Scene Generation/Understanding/Reconstruction, Embodied AI and so on, you can directly download the **`scene_dataset`**. Moreover, you can extract point cloud or do further Detection, Segmentation or Editing tasks since all objects in the scene are clearly separated.
+
+If you want to do some image/text to layout/scene or some 2D tasks, you can download **`rendering_dataset`**.
+
+If you want to utilize the intermediate scene layout for your downstream research, you can download **`layout_dataset`**.
+
+We have provided abundant functions in `Object-Retrieval-Layout2Scene/render.py`,  `util.py` and `visualization_mlayout.py`in [Object-Retrieval-Layout2Scene](https://github.com/Graphic-Kiliani/Object-Retrieval-Layout2Scene/tree/432d4c22dbd2d16e09d6c81629f124e523f0dc6a) to postprocess (visualize/filter/rendering etc. ) the infinigen scene data.
+
 
 
 ## Download Weights
