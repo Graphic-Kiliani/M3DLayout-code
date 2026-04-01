@@ -62,9 +62,9 @@ The dataset is separated into 3 parts:
 
 | Type | Description | Content | Size |
 |---|---|---|---|
-| `scene_dataset` | Origin scene with object geometries and textures | • Infinigen (8392 rooms with normal object density + 7607 rooms with relatively low object density = 15999 rooms): scene.blend, scene with segemented objects and textures. <br>• Matterport3D (95 houses): Postprocessed by segmenting each house into separated ply objects, you can import each subdir as a whole to Blender to receive a complete scene.<br>• 3D-Front (5173 rooms): Since we have not applied any additional processing, you can download the original 3D-FRONT dataset directly from [3D-Front official link](https://huggingface.co/datasets/huanngzh/3D-Front) | 3T before uncompress |
-| `rendering_dataset` | Rendered Images from scene | • Infinigen (15864 rooms): Floor masks, Oblique-view scene renderings, Top-down scene renderings, Text descriptions, Detailed per-scene JSON <br>• Matterport3D (95 houses): Floor masks for each room, Top-down layout renderings for each room, Detailed per-scene JSON <br>• 3D-Front (5173 rooms): Floor masks, Top-down scene renderings | 250GB before uncompress |
-| `layout_dataset` | Layout extracted from scene | **`<data_source>_train.json`**, **`<data_source>_test.json`**, and **`<data_source>_val.json`** for Infinigen & Matterport3D & 3D-Front. Including object count, category, location, bbox size, rotation, multi-level detailed description. | 31MB before uncompress |
+| `scene_dataset` | Origin scene with separated object geometries and textures | • Infinigen (8392 rooms with normal object density + 7607 rooms with relatively low object density = 15999 rooms): scene.blend, scene with segemented objects and textures. <br>• Matterport3D (90 houses): Postprocessed by segmenting each house into separated ply objects, you can import each subdir as a whole to Blender to receive a complete scene.<br>• 3D-Front (5173 rooms): Since we have not applied any additional processing, you can download the original 3D-FRONT dataset directly from [3D-Front official link](https://huggingface.co/datasets/huanngzh/3D-Front) | 3T before uncompress |
+| `rendering_dataset` | Rendered Images from scene | • Infinigen (15864 rooms): Floor masks, Oblique-view scene renderings, Top-down scene renderings, Text descriptions, Detailed per-scene JSON <br>• Matterport3D (90 houses + 4 json files + 1 README.md): Floor masks for each room, Top-down layout renderings for each room, Multi-Level Detailed per-scene JSON   <br>• 3D-Front (5173 rooms): Floor masks, Top-down scene renderings | 250GB before uncompress |
+| `layout_dataset` | Layout extracted from scene | **`<data_source>_train.json`**, **`<data_source>_test.json`**, and **`<data_source>_val.json`** for Infinigen & Matterport3D & 3D-Front. Including object count, category, location, bbox size, rotation, multi-level detailed description, etc. | 31MB before uncompress |
 
 To be simple, 
 
@@ -74,7 +74,7 @@ If you want to do some image/text to layout/scene or some 2D tasks, you can down
 
 If you want to utilize the intermediate scene layout for your downstream research, you can download **`layout_dataset`**.
 
-We have provided abundant functions in `Object-Retrieval-Layout2Scene/render.py`,  `util.py` and `visualization_mlayout.py`in [Object-Retrieval-Layout2Scene](https://github.com/Graphic-Kiliani/Object-Retrieval-Layout2Scene/tree/432d4c22dbd2d16e09d6c81629f124e523f0dc6a) to postprocess (visualize/filter/rendering etc. ) the infinigen scene data.
+We have provided abundant functions in `render.py`,  `util.py` and `visualization_mlayout.py` from [Object-Retrieval-Layout2Scene](https://github.com/Graphic-Kiliani/Object-Retrieval-Layout2Scene/tree/432d4c22dbd2d16e09d6c81629f124e523f0dc6a) to postprocess (visualize/filter/rendering etc. ) the infinigen scene data.
 
 
 
