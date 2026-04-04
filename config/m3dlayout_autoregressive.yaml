@@ -27,18 +27,18 @@ dataset:
   preserve_spatial_info: true             # Preserve spatial relationship information when rewriting
 
 train_data:
-  train_stats_file: "../mlayout/ar_stats_train.json"
+  train_stats_file: "../data/m3dlayout/ar_stats_train.json"
   json_files:
-    - "../mlayout/3dfront_train.json"
-    - "../mlayout/mp3d_train.json"
-    - "../mlayout/infinigen_train.json"
+    - "../data/m3dlayout/3dfront_train.json"
+    - "../data/m3dlayout/mp3d_train.json"
+    - "../data/m3dlayout/infinigen_train.json"
 
 val_data:
-  train_stats_file: "../mlayout/ar_stats_val.json"
+  train_stats_file: "../data/m3dlayout/ar_stats_val.json"
   json_files:
-    - "../mlayout/3dfront_val.json"
-    - "../mlayout/mp3d_val.json"
-    - "../mlayout/infinigen_val.json"
+    - "../data/m3dlayout/3dfront_val.json"
+    - "../data/m3dlayout/mp3d_val.json"
+    - "../data/m3dlayout/infinigen_val.json"
 
 network:
   type: "autoregressive_transformer"
@@ -65,9 +65,9 @@ feature_extractor:
 
 training:
     splits: ["train", "val"]
-    epochs: 60000
+    epochs: 31000
     batch_size: 256
-    save_frequency: 1000
+    save_frequency: 2000
     optimizer: Adam
     lr: 0.0001
     weight_decay: 0.0
@@ -79,4 +79,4 @@ validation:
 
 logger:
   type: "wandb"
-  project: "mlayout_autoregressive_transformer"
+  project: "m3dlayout_autoregressive_transformer"

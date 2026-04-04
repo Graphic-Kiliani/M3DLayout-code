@@ -108,12 +108,30 @@ Notes:
 - One input txt file produces one output json file.
 - The 1500 prompts are the test prompt set used in the original M3DLayout paper.
 
+## Training
+
+Place layout dataset JSON files under `data/m3dlayout/` (as referenced by `config/m3dlayout_*.yaml`).
+
+Train autoregressive model:
+```bash
+python scripts/train_autoregressive.py \
+  --config_file config/m3dlayout_autoregressive.yaml \
+  --experiment_tag m3dlayout_autoregressive
+```
+
+Train diffusion model:
+```bash
+python scripts/train_diffusion.py \
+  --config_file config/m3dlayout_diffusion.yaml \
+  --experiment_tag m3dlayout_diffusion
+```
+
 ## TODO
 - [x] Release Object Retrieval code of M3DLayout
 - [x] Release rendering code of layouts and scenes
 - [x] Release inference code of M3DLayout
 - [x] Release M3DLayout dataset
-- [ ] Provide training instruction for M3DLayout
+- [x] Provide training instruction for M3DLayout
 
 
 ## Citation

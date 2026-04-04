@@ -14,42 +14,64 @@ dataset:
                             "sink", "sofa", "standing_sink", "stool", "table", "toilet", "tv",
                             "tv_monitor", "tv_stand", "wardrobe", "window", "wine_cabinet"]
 
+  # Data augmentation settings
+  enable_description_augmentation: true
+  augmentation_probability: 0.8
+
+  # Small object filtering for Infinigen data
+  enable_small_object_filtering: true
+  small_object_filtering_probability: 0.5
+
+  # Sentence rewriting settings for style normalization
+  enable_sentence_rewriting: true
+  sentence_rewriting_probability: 0.6
+  preserve_spatial_info: true
+
+train_data:
+  train_stats_file: "../data/m3dlayout/dataset_stats_train.json"
+  json_files:
+    - "../data/m3dlayout/3dfront_train.json"
+    - "../data/m3dlayout/mp3d_train.json"
+    - "../data/m3dlayout/infinigen_train.json"
+
+val_data:
+  train_stats_file: "../data/m3dlayout/dataset_stats_val.json"
+  json_files:
+    - "../data/m3dlayout/3dfront_val.json"
+    - "../data/m3dlayout/mp3d_val.json"
+    - "../data/m3dlayout/infinigen_val.json"
+
 network:
   type: "diffusion_scene_layout_ddpm"
-  # denoising network
   net_type: "unet1d"
 
-  # concate squarewish layer
   point_dim: 110
   latent_dim: 0
-  room_mask_condition: false # not use room_mask 
-  text_condition: True
+  room_mask_condition: false
+  text_condition: true
   text_embed_dim: 512
-  sample_num_points: 120 # max_length 
+  sample_num_points: 120
 
   objectness_dim: 0
   class_dim: 102
   angle_dim: 2
   objfeat_dim: 0
 
-  # class condition
   learnable_embedding: true
   instance_condition: true
   instance_emb_dim: 128
 
-  # diffusion config
   diffusion_kwargs:
-    schedule_type: 'linear'
+    schedule_type: "linear"
     beta_start: 0.0001
     beta_end: 0.02
-    time_num: 1000 
-    loss_type: 'mse'
-    model_mean_type: 'v' 
-    model_var_type: 'fixedsmall'
+    time_num: 1000
+    loss_type: "mse"
+    model_mean_type: "v"
+    model_var_type: "fixedsmall"
     loss_separate: true
-    # calculate iou loss
     loss_iou: true
-    train_stats_file: "../mlayout/dataset_stats_train.json"
+    train_stats_file: "../data/m3dlayout/dataset_stats_train.json"
 
   net_kwargs:
     dim: 512
@@ -65,7 +87,7 @@ network:
     seperate_all: true
     merge_bbox: true
     modulate_time_context_instanclass: true
-    text_condition: True
+    text_condition: true
     text_dim: 512
 
 feature_extractor:
@@ -73,3 +95,30 @@ feature_extractor:
   feature_size: 64
   freeze_bn: true
   input_channels: 1
+
+training:
+  splits: ["train", "val"]
+  epochs: 31000
+  batch_size: 256
+  save_frequency: 2000
+  max_grad_norm: 10
+  optimizer: Adam
+  weight_decay: 0.0
+  schedule: "step"
+  lr: 0.0002
+  lr_step: 10000
+  lr_decay: 0.5
+
+validation:
+  splits: ["test"]
+  frequency: 100000
+  batch_size: 128
+  gen_traj: false
+  num_step: 100
+  gen_gt: true
+  gen_prob_map: false
+
+logger:
+  type: "wandb"
+  project: "m3dlayout_diffusion"
+  log_frequency: 10
