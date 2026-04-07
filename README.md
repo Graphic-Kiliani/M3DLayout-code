@@ -40,7 +40,7 @@
 </h4>
 
 
-We have released our **Dataset**, **Inference**, **Object Retrieval** and **Rendering** code, come and try it!!!
+We have fully released our **Dataset** (Scene & Layout & Rendering), **Inference & Training** and **Data Curation** (Object Retrieval & Rendering & Description Generation), come and try it!!!
 
 <p align="center">
     <img width="100%" alt="demo", src="./assets/demo.gif">
@@ -56,7 +56,7 @@ pip install -r requirements.txt --use-pep517 --no-build-isolation
 ```
 
 ## Download Dataset
-Please download our processed dataset from [Baidu Netdisk](https://pan.baidu.com/s/1I4GRh3VfWw1nyIMVHRyF5A?pwd=jdek) or Huggingface (will be released soon).
+Please download our processed dataset from [Baidu Netdisk](https://pan.baidu.com/s/1I4GRh3VfWw1nyIMVHRyF5A?pwd=jdek) or [Huggingface](https://huggingface.co/datasets/Metaverse-AI-Lab/M3DLayout).
 
 The dataset is separated into 3 parts:
 
