@@ -1,5 +1,7 @@
 <h1 align="center">M3DLayout: A Multi-Source Dataset of 3D Indoor Layouts and Structured Descriptions for 3D Generation</h1>
-
+<h4 align="center" style="line-height:1.4; margin-top:0.6rem">
+CVPR 2026
+</h4>
 
 
 
@@ -40,7 +42,14 @@
 </h4>
 
 
+## TODO
 We have fully released our **Dataset** (Scene & Layout & Rendering), **Inference & Training** and **Data Curation** (Object Retrieval & Rendering & Description Generation), come and try it!!!
+- [x] Release Object Retrieval code of M3DLayout
+- [x] Release rendering code of layouts and scenes
+- [x] Release inference code of M3DLayout
+- [x] Release M3DLayout dataset
+- [x] Provide training instruction for M3DLayout
+- [x] Provide Data curation instruction for M3DLayout's three data resources (3D-Front, Matterport3D, Infinigen)
 
 <p align="center">
     <img width="100%" alt="demo", src="./assets/demo.gif">
@@ -131,13 +140,6 @@ We provide complete [processing pipelines](https://github.com/Graphic-Kiliani/M3
 
 
 
-## TODO
-- [x] Release Object Retrieval code of M3DLayout
-- [x] Release rendering code of layouts and scenes
-- [x] Release inference code of M3DLayout
-- [x] Release M3DLayout dataset
-- [x] Provide training instruction for M3DLayout
-- [x] Provide Data curation instruction for M3DLayout's three data resources (3D-Front, Matterport3D, Infinigen)
 
 
 ## Citation
