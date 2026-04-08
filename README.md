@@ -126,12 +126,18 @@ python scripts/train_diffusion.py \
   --experiment_tag m3dlayout_diffusion
 ```
 
+## Data Curation
+We provide complete [processing pipelines](https://github.com/Graphic-Kiliani/M3DLayout-code/tree/main/data_curation) for the 3D-Front, Matterport3D, and Infinigen datasets. We hope these tools will help the community scale up the dataset with additional computing and storage resources.
+
+
+
 ## TODO
 - [x] Release Object Retrieval code of M3DLayout
 - [x] Release rendering code of layouts and scenes
 - [x] Release inference code of M3DLayout
 - [x] Release M3DLayout dataset
 - [x] Provide training instruction for M3DLayout
+- [x] Provide Data curation instruction for M3DLayout's three data resources (3D-Front, Matterport3D, Infinigen)
 
 
 ## Citation
