@@ -32,6 +32,9 @@ CVPR 2026
   <a href="https://arxiv.org/abs/2509.23728">
       <img src="https://img.shields.io/badge/arXiv-b31b1b.svg?logo=arXiv&logoColor=white" alt="arXiv height="22">
   </a>
+  <a href="https://huggingface.co/datasets/Metaverse-AI-Lab/M3DLayout">
+    <img src="https://img.shields.io/badge/Hugging%20Face-Dataset-FFD21E?logo=huggingface&logoColor=black" alt="Hugging Face" height="22">
+  </a>  
 </p>
 
 
