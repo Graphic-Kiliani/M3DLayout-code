@@ -1,6 +1,6 @@
 <h1 align="center">M3DLayout: A Multi-Source Dataset of 3D Indoor Layouts and Structured Descriptions for 3D Generation</h1>
 <h4 align="center" style="line-height:1.4; margin-top:0.6rem">
-CVPR 2026
+CVPR 2026 Highlight
 </h4>
 
 
