@@ -46,7 +46,10 @@ CVPR 2026 Highlight
 
 
 ## TODO
-We have fully released our **Dataset** (Scene & Layout & Rendering), **Inference & Training** and **Data Curation** (Object Retrieval & Rendering & Description Generation), come and try it!!!
+We have fully released our **Dataset** (Scene & Layout & Rendering), **Inference & Training** and **Data Curation** (Object Retrieval & Rendering & Description Generation).
+
+**<span style="color:red">Notice★</span>: We are continuously scaling up our layout collection and will release more results as soon as they are ready. Please stay tuned and follow our work for updates.**
+
 - [x] Release Object Retrieval code of M3DLayout
 - [x] Release rendering code of layouts and scenes
 - [x] Release inference code of M3DLayout
