@@ -151,12 +151,11 @@ We provide complete [processing pipelines](https://github.com/Graphic-Kiliani/M3
 ## Citation
 If you find our work helpful, please consider citing:
 ```bibtex
-@article{zhang2025m3dlayout,
-      title={M3DLayout: A Multi-Source Dataset of 3D Indoor Layouts and Structured Descriptions for 3D Generation}, 
-      author={Yiheng, Zhang and Zhuojiang, Cai and Mingdao, Wang and Meitong, Guo and Tianxiao, Li and Li, Lin and Yuwang, Wang},
-      journal={arXiv preprint arXiv:2509.23728},
-      year={2025},
-      url={https://arxiv.org/abs/2509.23728}, 
+@inproceedings{zhang2026m3dlayout,
+  author = {Zhang, Yiheng and Cai, Zhuojiang and Wang, Mingdao and Guo, Meitong and Li, Tianxiao and Lin, Li and Wang, Yuwang},
+  title = {M3DLayout: A Multi-Source Dataset of 3D Indoor Layouts and Structured Descriptions for 3D Generation},
+  booktitle = {CVPR},
+  year = {2026}
 }
 ```
 
